@@ -10,7 +10,7 @@ const UserSchema = new mongoose.Schema({
     favourites: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "News",
+            ref: "News", // for getting all user fav list from db
         }
     ]
 });
