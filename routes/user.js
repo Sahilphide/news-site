@@ -81,3 +81,45 @@ router.delete("delete/:id" , middleWare.isLoggedIn, (req,res)=>{
 
     });
 });
+
+// authorisation
+
+router.get('/register' , middleWare.isLoggedOut,function(req,res){
+    res.render("register");
+});
+
+router.post('register', middleWare.isLoggedOut , function(req,res){
+    User.register(new User({
+        username : req.body.username,
+        email: req.body.email,
+        contact: req.body.contact
+    }),req.body.password,function(err,user){
+        if(err){
+            console.log(err);
+            req.flash('error', err.message);
+            res.render('register');
+        }else{
+            passport.authenticate('local')(req,res,function(){
+                req.flash('success', 'welcome' +user.username);
+                res.redirect("/");
+            });
+        }
+    });
+});
+
+router.get('/login', middleWare.isLoggedOut,function(req,res){
+    res.render('login');
+});
+
+router.post('/login', passport.authenticate('local',{
+    successRedirect:'/',
+    failureRedirect:'/login',
+}));
+
+router.get('/logout' , function(req,res){
+    req.logout();
+    req.flash('success', 'successfully logged out');
+    res.redirect('/');
+});
+
+module.export = router;
