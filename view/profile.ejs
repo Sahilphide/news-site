@@ -1,0 +1,69 @@
+<%- include('./partials/header'); %> 
+
+<div class="container-fluid mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4 col-xl-3 mb-3">
+            <div class="card shadow">
+                <ul class="list-group list-group-flush">
+                    <li class="lead list-group-item  text-dark">
+                        <p class="lead">Profile</p>
+                    </li>
+                    <li class="list-group-item">
+                        <p class="text-muted"><i class="fa fa-user text-muted"></i> Username</p>
+                        <p class="lead"><%= user.username %> </p>
+                    </li>
+                    <li class="list-group-item">
+                        <p class="text-muted"><i class="fa fa-envelope text-muted"></i> Email</p>
+                        <p class="lead"><%= user.email %> </p>
+                    </li>   
+                    <li class="list-group-item">
+                        <p class="text-muted"><i class="fa fa-phone text-muted"></i> Phone Number</p>
+                        <p class="lead"><%= user.contact %> </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-8 col-xl-8">
+            <% if(articles.length!=0) {%> 
+                    <div class="row">
+                        <% articles.forEach(function(article){  %> 
+                            <div class="col-sm-6 col-lg-4 mb-3">
+                                <div class="card shadow h-100 w-100">
+                                    <img src="<%= article.image_url %> " alt="" class="card-img-top">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><%= article.title %></h5>
+                                        <p class="card-text"><%= article.description %></p>
+                                    </div>
+                                    <div id="read-more" class="mb-3">
+                                        <a href="<%= article.article_url %>" class="btn btn-primary">Read More</a>
+                                    </div>
+                                    <div class="card-footer row justify-content-around mx-0 px-0 align-items-center">
+                                        <div class="col-6">
+                                            <p class="text-muted mb-0"><%= article.source %></p>
+                                        </div>
+                                        <div class="col-3">
+                                            <% if(!article.isFav) {%>
+                                                <button class="btn btn-outline like-btn"  data-id="<%= article._id %> "><i class="fa fa-heart-o heart-icon"></i></button>
+                                            <% }else{ %>
+                                                <button class="btn btn-outline unlike-btn" data-id="<%= article._id %> "><i class="fa fa-heart heart-icon"></i></button>
+                                            <% } %> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }) %> 
+                    </div>
+                <% }else{ %> 
+                    <div class="container">
+                        <div class="jumbotron text-center">
+                            <p class="display-4">No Favourites Found</p>
+                        </div>
+                    </div>
+                <% } %> 
+            
+        </div>
+    </div>
+</div>
+
+
+<%- include('./partials/footer'); %> 

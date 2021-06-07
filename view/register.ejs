@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GT | Sign Up</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/main.css">
+    </head>
+    <body id="login-body">
+        <nav class="navbar navbar-expand-md navbar-dark">
+            <a class="navbar-brand" href="/">GT</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <% if(currentUser){ %> 
+                    <li class="nav-item ">
+                    <a class="nav-link text-light" href="/latest">Latest</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link text-white" href="/business">Business</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/technology">Technology</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/health">Health</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/sports">Sports</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/profile">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/logout">Logout</a>
+                    </li>
+                    <% }else{ %>
+                        <li class="nav-item">
+                            <a class="nav-link text-white lead" href="/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white lead" href="/register">Sign Up</a>
+                        </li>
+                    <% } %> 
+                </ul>
+                
+            </div>
+        </nav>
+        <% if(error && error.length>0) {%>
+            <div class="alert alert-danger container" role="alert">
+            <%= error %> 
+            </div> 
+        <% } %> 
+        <% if(success && success.length>0) {%>
+            <div class="alert alert-success container" role="alert">
+            <%= success %> 
+            </div> 
+        <% } %> 
+        <main>
+            <div class="container-fluid pt-5" >
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="container w-75 mx-md-auto bg-light shadow-lg rounded-lg p-3 p-xl-5 mt-4 border-muted border">
+                            <div class="px-xl-3 py-lg-3">
+                                <form action="/register" method="POST">
+                                    <div class="form-group text-center">
+                                        <p class="h2 font-weight-normal text-dark mb-4">Sign Up</p>
+                                    </div>
+                                    <div class="form-group my-4">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-user text-dark"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control" name="username" placeholder="Username" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group my-4">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-envelope text-dark"></i></span>
+                                            </div>
+                                            <input type="email" class="form-control" name="email" placeholder="Email" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group my-4">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-phone text-dark"></i></span>
+                                            </div>
+                                            <input type="tel" pattern="[7-9]{1}[0-9]{9}" class="form-control" name="contact" placeholder="Phone Number" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group my-4">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text"><i class="fa fa-lock text-dark"></i></span>
+                                            </div>
+                                            <input type="password" class="form-control" name="password" placeholder="Password" required>
+                                        </div>
+                                    </div>
+                                    <div class="text-center mt-4">
+                                        <input class="btn btn-outline-dark btn-lg" type="submit" value="Sign Up">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </main>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" 
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" 
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    </body>
+</html>
+

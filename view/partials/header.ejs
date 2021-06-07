@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%= title %></title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/main.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-md navbar-light">
+            <a class="navbar-brand" href="/">GT</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                <% if(currentUser){ %> 
+                  <li class="nav-item">
+                  <a class="nav-link text-dark" href="/latest">Latest</a>
+                  </li>
+                  <li class="nav-item">
+                  <a class="nav-link text-dark" href="/business">Business</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link text-dark" href="/technology">Technology</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link text-dark" href="/health">Health</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link text-dark" href="/sports">Sports</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-dark" href="/profile">Profile</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link text-dark" href="/logout">Logout</a>
+                  </li>
+              <% }else{ %>
+                  <li class="nav-item">
+                      <a class="nav-link text-dark" href="/login">Login</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link text-dark" href="/register">Sign Up</a>
+                  </li>
+              <% } %> 
+              </ul>
+              
+            </div>
+          </nav>
+            <% if(error && error.length>0) {%>
+              <div class="alert alert-danger" role="alert">
+                <%= error %> 
+              </div> 
+            <% } %> 
+            <% if(success && success.length>0) {%>
+              <div class="alert alert-success" role="alert">
+                <%= success %> 
+              </div> 
+            <% } %> 
+          <main>
+
+          
+
+
+       
